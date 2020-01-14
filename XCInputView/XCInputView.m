@@ -26,16 +26,6 @@
 
 #define K_PLACEHOLDER_COLOR            RGBA_COLOR(198, 198, 198, 1)   // 输入框占位文字的颜色
 
-/*⏰ ----- 右侧图标：如果是密码输入框，则右侧可能会出现一个 “小眼睛” 按钮，
- 用来控制输入框文本的显示和隐藏；需要就传；不需要就不传 ----- ⏰*/
-#define K_NORMAL_RIGHT_ICON_NAME        @"1.jpg"         // 普通状态：不显示明文
-#define K_SELECT_RIGHT_ICON_NAME        @"2.jpg"         // 选中状态：显示明文
-
-
-
-
-
-
 #import "XCInputView.h"
 
 
@@ -104,8 +94,6 @@
     self.leftIconWidthConstraint.constant  = K_LEFT_ICON_WH;
     self.leftIconHeightConstraint.constant = K_LEFT_ICON_WH;
     self.sepratorView.backgroundColor = K_SEPERATOR_COLOR;
-    self.rightIcon.image = [UIImage imageNamed:K_NORMAL_RIGHT_ICON_NAME];
-    self.rightIcon.highlightedImage = [UIImage imageNamed:K_SELECT_RIGHT_ICON_NAME];
     
     /*⏰ ----- 输入框文字发生改变的时候调用 ----- ⏰*/
     [self.textField addTarget:self action:@selector(textDidChangeAction) forControlEvents:UIControlEventEditingChanged];
@@ -127,15 +115,12 @@
 {
     _showRightView = showRightView;
     
-    if (showRightView)
-    {
+    if (showRightView) {
         // 显示右侧的 “眼睛视图”
         self.rightViewWidthConstraint.constant = self.bounds.size.height;
         self.rightView.hidden = NO;
         self.textField.secureTextEntry = YES;
-    }
-    else
-    {
+    } else {
         // 隐藏右侧的 “眼睛视图”
         self.rightViewWidthConstraint.constant = 0;
         self.rightView.hidden = YES;
@@ -172,20 +157,25 @@
     self.textField.placeholder = placeholder;
 }
 
-- (void)setIsNumberKeyboard:(BOOL)isNumberKeyboard
+- (void)setTextColor:(UIColor *)textColor
 {
-    _isNumberKeyboard = isNumberKeyboard;
+    _textColor = textColor;
     
-    if (isNumberKeyboard)
-    {
-        // 纯数字键盘
-        self.textField.keyboardType = UIKeyboardTypeNumberPad;
-    }
-    else
-    {
-        // 英文键盘
-        self.textField.keyboardType = UIKeyboardTypeASCIICapable;
-    }
+    self.textField.textColor = textColor;
+}
+
+- (void)setFontSize:(NSInteger)fontSize
+{
+    _fontSize = fontSize;
+    
+    self.textField.font = [UIFont systemFontOfSize:fontSize];
+}
+
+- (void)setKeyboardType:(NSInteger)keyboardType
+{
+    _keyboardType = keyboardType;
+    
+    self.textField.keyboardType = keyboardType;
 }
 
 - (void)setHideSepratorLine:(BOOL)hideSepratorLine
@@ -193,6 +183,20 @@
     _hideSepratorLine = hideSepratorLine;
     
     self.sepratorView.hidden = hideSepratorLine;
+}
+
+- (void)setSecureOnImage:(UIImage *)secureOnImage
+{
+    _secureOnImage = secureOnImage;
+    
+    self.rightIcon.image = secureOnImage;
+}
+
+- (void)setSecureOffImage:(UIImage *)secureOffImage
+{
+    _secureOffImage = secureOffImage;
+    
+    self.rightIcon.highlightedImage = secureOffImage;
 }
 
 #pragma mark - 🎬 👀 Action Method 👀
@@ -221,7 +225,4 @@
     self.textField.secureTextEntry = !self.rightIcon.isHighlighted;
 }
 
-
 @end
-
-

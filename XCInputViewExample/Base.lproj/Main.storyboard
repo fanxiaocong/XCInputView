@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,11 +33,15 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="12345"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入账号"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showRightView" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isNumberKeyboard" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hideSepratorLine" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxCount">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="secureOnImage" value="icon-eye-close"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="secureOffImage" value="icon-eye-open"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcM-n9-wB5" customClass="XCInputView">
@@ -51,10 +55,12 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="selectedLeftIcon" value="2.jpg"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入账号"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showRightView" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isNumberKeyboard" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hideSepratorLine" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxCount">
                                         <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -77,5 +83,7 @@
     <resources>
         <image name="1.jpg" width="375" height="252"/>
         <image name="2.jpg" width="375" height="252"/>
+        <image name="icon-eye-close" width="19" height="10"/>
+        <image name="icon-eye-open" width="20" height="14"/>
     </resources>
 </document>
